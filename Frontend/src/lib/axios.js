@@ -1,7 +1,19 @@
 import axios from 'axios';
 import { useAuth } from '../store/useAuth';
 
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const getBaseUrl = () => {
+  const envUrl = import.meta.env.VITE_API_URL;
+  if (envUrl && envUrl.startsWith('http')) return envUrl;
+  
+  // If we're in the browser and no absolute URL is provided, use current origin
+  if (typeof window !== 'undefined') {
+    return window.location.origin;
+  }
+  
+  return 'http://localhost:5000';
+};
+
+const BASE_URL = getBaseUrl();
 const API_URL = `${BASE_URL}/api/v1`;
 
 export const api = axios.create({
