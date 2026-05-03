@@ -1,5 +1,10 @@
 {
   "name": "ethere-platform",
+  "private": true,
+  "workspaces": [
+    "Backend",
+    "Frontend"
+  ],
   "scripts": {
     "start": "npm run start --workspace Backend",
     "dev": "npm run dev --workspace Backend",
