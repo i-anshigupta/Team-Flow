@@ -1,0 +1,19 @@
+{
+  "name": "ethere-platform",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "Backend",
+    "Frontend"
+  ],
+  "scripts": {
+    "start": "npm run start --workspace Backend",
+    "dev": "npm run dev --workspace Backend",
+    "build": "npm run build --workspace Frontend",
+    "frontend:dev": "npm run dev --workspace Frontend",
+    "install-all": "npm install"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
