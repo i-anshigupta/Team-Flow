@@ -1,9 +1,9 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import cors from 'cors';
-import helmet from 'helmet';
-import rateLimit from 'express-rate-limit';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { connectDB } from './src/config/db.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 import authRoutes from './src/routes/authRoutes.js';
 import projectRoutes from './src/routes/projectRoutes.js';
@@ -39,6 +39,14 @@ app.use('/api/v1/dashboard', dashboardRoutes);
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok' });
+});
+
+// Serve static assets in production
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Catch-all route to serve the frontend
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__filename, '../public/index.html'));
 });
 
 const PORT = process.env.PORT || 5000;
