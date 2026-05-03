@@ -1,3 +1,13 @@
 {
-  "name": "ethere-platform"
+  "name": "ethere-platform",
+  "scripts": {
+    "start": "npm run start --workspace Backend",
+    "dev": "npm run dev --workspace Backend",
+    "build": "npm run build --workspace Frontend",
+    "frontend:dev": "npm run dev --workspace Frontend",
+    "install-all": "npm install"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
 }
