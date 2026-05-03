@@ -21,7 +21,9 @@ connectDB();
 
 const app = express();
 
-app.use(helmet());
+app.use(helmet({
+  contentSecurityPolicy: false, // Disabled for unified deployment to allow easier internal connections
+}));
 app.use(cors({
   origin: [
     process.env.CLIENT_URL || 'http://localhost:5173',
