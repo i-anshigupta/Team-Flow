@@ -53,7 +53,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Catch-all route to serve the frontend
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__filename, '../public/index.html'));
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 const PORT = process.env.PORT || 5000;
